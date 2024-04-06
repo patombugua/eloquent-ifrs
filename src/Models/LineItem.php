@@ -310,4 +310,12 @@ class LineItem extends Model implements Recyclable, Segregatable
         return $save;
 
     }
+
+    /**
+     * Lineable points to the actual item eg product, financial transaction, etc.
+     */
+    public function lineable()
+    {
+        return $this->morphTo();
+    }
 }
