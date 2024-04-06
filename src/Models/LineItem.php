@@ -318,4 +318,19 @@ class LineItem extends Model implements Recyclable, Segregatable
     {
         return $this->morphTo();
     }
+
+
+    public function discount()
+    {
+        return $this->hasOne(Transaction::class, 'reference')
+                    ->where('transaction_type', Transaction::JN);
+    }
+
+
+    public function getDiscount()
+    {
+        $discount = $this->discount; // do this to auto load if not loaded
+
+        return $discount ? $discount->amount: 0;
+    }
 }
