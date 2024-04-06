@@ -843,4 +843,13 @@ class Transaction extends Model implements Segregatable, Recyclable, Clearable, 
             }
         );
     }
+
+
+    /**
+     * Accountable points to the actual person eg client, user, etc.
+     */
+    public function accountable()
+    {
+        return $this->morphTo();
+    }
 }
